@@ -21,7 +21,7 @@ steps:
     versionSpec: '5.0.0'
 
 - script: echo $(Build.BuildNumber)
-- script: echo $(GitVersion.SemVer)
+- script: echo %GitVersion.SemVer
 
 - task: DotNetCoreCLI@2
   displayName: Build
