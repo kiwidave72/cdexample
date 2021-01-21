@@ -33,19 +33,15 @@ steps:
     versioningScheme: byEnvVar
     versionEnvVar: 'GitVersion.SemVer'
 
-- task: DotNetCoreCLI@2
-  displayName: publish
+ 
+     
+- task: CopyFiles@2
   inputs:
-    command: 'publish'
-    publishWebProjects: false
-    projects: './cdexample/cdexample/cdexample.csproj'
+    SourceFolder: './cdexample/cdexample/cdexample/bin/Debug/netcoreapp3.1'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
     
-- task: DotNetCoreCLI@2
-  displayName: pack
-  inputs:
-    command: 'pack'
-    packagesToPack: './cdexample/cdexample/cdexample.csproj'
-    versioningScheme: byEnvVar
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
