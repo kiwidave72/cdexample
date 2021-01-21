@@ -34,11 +34,18 @@ steps:
     versionEnvVar: 'GitVersion.SemVer'
 
 - task: DotNetCoreCLI@2
+  displayName: publish
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: './cdexample/cdexample/cdexample.csproj'
+    
+- task: DotNetCoreCLI@2
+  displayName: pack
   inputs:
     command: 'pack'
     packagesToPack: './cdexample/cdexample/cdexample.csproj'
-    versioningScheme: 'off'
-
+    versioningScheme: byEnvVar
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
