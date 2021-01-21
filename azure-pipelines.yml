@@ -28,16 +28,16 @@ steps:
   displayName: Build Example Console
   inputs:
     command: build
-    projects: '- task: DotNetCoreCLI@2
+    projects: './cdexample/cdexample/cdexample.csproj'
+    configuration: 'debug'
+    versioningScheme: byEnvVar
+    versionEnvVar: 'GitVersion.SemVer'
 
-- task:
+- task: DotNetCoreCLI@2
   inputs:
     command: 'pack'
     packagesToPack: './cdexample/cdexample/cdexample.csproj'
     versioningScheme: 'off'
-    configuration: 'debug'
-    versioningScheme: byEnvVar
-    versionEnvVar: 'GitVersion.SemVer'
 
 - task: PublishBuildArtifacts@1
   inputs:
