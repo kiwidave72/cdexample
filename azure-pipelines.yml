@@ -37,7 +37,7 @@ steps:
      
 - task: CopyFiles@2
   inputs:
-    SourceFolder: './cdexample/cdexample/cdexample/bin/Debug/netcoreapp3.1'
+    SourceFolder: 'cdexample/cdexample/bin/Debug/netcoreapp3.1'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     
