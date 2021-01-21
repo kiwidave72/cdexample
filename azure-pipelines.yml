@@ -23,7 +23,7 @@ steps:
 - task: gitversion/execute@0
   inputs:
     useConfigFile: true
-    configFilePath: './Gitversion.yml'
+    configFilePath: './GitVersion.yml'
     
 - script: echo $(Build.BuildNumber)
 - script: echo $($GITVERSION_MAJORMINORPATCH)
