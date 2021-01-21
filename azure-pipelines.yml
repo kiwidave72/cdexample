@@ -27,9 +27,14 @@ steps:
       GITVERSIONNUMBER: $(GitVersion.SemVer)
 - script: echo %Action%%BuildVersion%
   displayName: 'Set build version'
+
+- script: 
+      $versionInfo = '$($GITVERSION_MAJORMINORPATCH)'
+      Write-Host("##vso[task.setvariable variable=Version;]$versionInfo")
   env:
     Action: '##vso[build.updatebuildnumber]'
     BuildVersion: '$env:Version'
+
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
