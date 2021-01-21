@@ -23,6 +23,9 @@ steps:
   inputs:
     useConfigFile: true
     configFilePath: 'GitVersion.yml'
+  env:
+      GITVERSIONNUMBER: $(GitVersion.SemVer)
+
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
