@@ -26,7 +26,7 @@ steps:
     configFilePath: './GitVersion.yml'
     
 - script: echo $(Build.BuildNumber)
-- script: echo $(GitVersion_SemVer)
+- script: echo $(GitVersion_BuildMetaData)
 
 - task: DotNetCoreCLI@2
   displayName: Build
