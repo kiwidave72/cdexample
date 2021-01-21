@@ -6,7 +6,7 @@
 
 
 trigger:
-- main
+- master
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -23,7 +23,7 @@ steps:
 - task: gitversion/execute@0
   inputs:
     useConfigFile: true
-    configFilePath: './Gitversion.yam'
+    configFilePath: './Gitversion.yml'
     
 - script: echo $(Build.BuildNumber)
 - script: echo $($GITVERSION_MAJORMINORPATCH)
