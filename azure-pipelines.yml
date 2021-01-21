@@ -12,24 +12,20 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
 
 - task: gitversion/setup@0
+  displayName: Setup gitversion
   inputs:
     versionSpec: '5.x'
 
 - task: gitversion/execute@0
+  displayName: Execute gitversion
   inputs:
     useConfigFile: true
     configFilePath: './GitVersion.yml'
-    
-- script: echo $(Build.BuildNumber)
-- script: echo $(GitVersion_BuildMetaData)
 
 - task: DotNetCoreCLI@2
-  displayName: Build
+  displayName: Build Example Console
   inputs:
     command: build
     projects: './cdexample/cdexample/cdexample.csproj'
