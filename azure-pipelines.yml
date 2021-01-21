@@ -15,11 +15,11 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- task: gitversion/execute@0
+
+- task: gitversion/setup@0
   inputs:
-    useConfigFile: true
-    configFilePath: 'GitVersion.yml'
-    
+    versionSpec: '5.0.0'
+
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
