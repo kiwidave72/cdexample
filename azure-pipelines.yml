@@ -32,3 +32,8 @@ steps:
     configuration: 'debug'
     versioningScheme: byEnvVar
     versionEnvVar: 'GitVersion.SemVer'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'cdexample.console'
+    publishLocation: 'Container'
