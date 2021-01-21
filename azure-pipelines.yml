@@ -20,6 +20,8 @@ steps:
   inputs:
     versionSpec: '5.0.0'
 
+- script: echo $(Build.BuildNumber)
+- script: echo $(GitVersion.SemVer)
 
 - task: DotNetCoreCLI@2
   displayName: Build
@@ -29,4 +31,3 @@ steps:
     configuration: 'debug'
     versioningScheme: byEnvVar
     versionEnvVar: 'GitVersion.SemVer'
- 
