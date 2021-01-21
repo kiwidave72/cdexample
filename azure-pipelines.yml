@@ -11,6 +11,8 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+container:
+
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
@@ -19,23 +21,11 @@ steps:
 - task: gitversion/setup@0
   inputs:
     versionSpec: '5.0.0'
-- task: gitversion/execute@0
+
+- task: DotNetCoreCLI@2
+  displayName: Build
   inputs:
-    useConfigFile: true
-    configFilePath: './GitVersion.yml'
-  env:
-      GITVERSIONNUMBER: $(GitVersion.SemVer)
-- script: echo %Action%%BuildVersion%
-  displayName: 'Set build version'
+    command: build
+    versioningScheme: byEnvVar
+    versionEnvVar: 'GitVersion.SemVer'
 
-- script: 
-      $versionInfo = '$($GITVERSION_MAJORMINORPATCH)'
-      Write-Host("##vso[task.setvariable variable=Version;]$versionInfo")
-  env:
-    Action: '##vso[build.updatebuildnumber]'
-    BuildVersion: '$env:Version'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
