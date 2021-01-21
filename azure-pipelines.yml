@@ -25,7 +25,7 @@ steps:
   displayName: Build
   inputs:
     command: build
-    projects: './cdexample/cdexample.sln'
+    projects: './cdexample/cdexample/cdexample.csproj'
     configuration: 'debug'
     versioningScheme: byEnvVar
     versionEnvVar: 'GitVersion.SemVer'
