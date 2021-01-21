@@ -25,7 +25,11 @@ steps:
     configFilePath: 'GitVersion.yml'
   env:
       GITVERSIONNUMBER: $(GitVersion.SemVer)
-
+- script: echo %Action%%BuildVersion%
+  displayName: 'Set build version'
+  env:
+    Action: '##vso[build.updatebuildnumber]'
+    BuildVersion: '$env:Version'
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
